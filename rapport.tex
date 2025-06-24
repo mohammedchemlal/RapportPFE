@@ -1,0 +1,375 @@
+\documentclass[a4paper,15pt]{report}
+
+% Packages de base
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{chngcntr}  % Pour une numérotation continue des pages
+\usetikzlibrary{calc}
+\usepackage{indentfirst} 
+% Définition des couleurs
+\definecolor{emsigreen}{RGB}{0,153,51}
+\definecolor{emsimaroon}{RGB}{153,0,51}
+
+% Définition des informations fixes
+\newcommand{\fixeddate}{2025-06-23 16:11:47} % Date et heure mises à jour
+\newcommand{\currentuser}{mohammedchemlaloui} % Identifiant utilisateur mis à jour
+
+% Configuration pour une numérotation continue des pages à travers les chapitres
+\counterwithout{page}{chapter}
+
+% Configuration des en-têtes et pieds de page
+\fancyhf{} % Efface tous les en-têtes et pieds de page
+\fancyfoot[L]{Projet de fin d'étude}
+\fancyfoot[R]{2024-2025}
+\fancyhead[L]{\nouppercase{\leftmark}}
+\fancyfoot[C]{  Page \thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{1pt}
+\pagestyle{fancy}
+
+% Ajout de l'image dans l'en-tête
+\fancyhead[R]{\includegraphics[height=0.8cm]{logoemsi.png}}
+\fancyhead[R]{\includegraphics[height=0.8cm]{globallogo.png}} % Ajustez le chemin et la taille de l'image selon vos besoins
+
+% Définition du style pour les pages de chapitre
+\fancypagestyle{plain}{
+	\fancyhf{} % Efface tous les champs
+	\fancyfoot[L]{Projet de fin d'étude}
+	\fancyfoot[R]{2024-2025}
+	\fancyfoot[C]{  Page \thepage}
+	\fancyhead[L]{\includegraphics[height=0.8cm]{logoemsi.png}} % Image à gauche
+	\fancyhead[R]{\includegraphics[height=0.8cm]{globallogo.png}} % Image à droite % Ajout de l'image aussi sur les pages de chapitre
+	\renewcommand{\headrulewidth}{1pt}
+	\renewcommand{\footrulewidth}{1pt}
+}
+
+% Autres configurations
+\setlength{\parindent}{0cm} % Suppression de l'indentation des paragraphes
+\setlength{\parskip}{0.5cm} % Espacement entre les paragraphes
+
+% Espacement pour l'en-tête et le pied de page
+\setlength{\headheight}{15pt}
+\setlength{\headsep}{1.5cm}
+\setlength{\footskip}{1.5cm}
+% Commande pour créer une première page sans en-tête avec image
+\newcommand{\premierepagewithoutimage}{
+	\thispagestyle{firstpage}
+	
+}
+
+
+
+\fancypagestyle{firstpage}{
+	\fancyhf{} % Efface tous les champs
+	\fancyfoot[L]{Projet de fin d'étude}
+	\fancyfoot[R]{2024-2025}
+	\fancyfoot[C]{User: \currentuser\ | Page \thepage}
+	% Pas d'image dans l'en-tête pour ce style
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{1pt}
+}
+
+\begin{document}
+	
+	% Appliquer le style spécial à la première page
+	\premierepagewithoutimage
+
+	
+	% Suppression des numéros de page
+	\thispagestyle{empty}
+	
+	% Création du cadre avec bordure verte à gauche
+	\begin{tikzpicture}[remember picture, overlay]
+		% Cadre principal
+
+		
+		% Bordure verte à gauche
+		\fill [emsigreen] 
+		($(current page.north west)+(1cm,-3.7cm)$) rectangle 
+		($(current page.south west)+(1.5cm,5cm)$);
+				
+		% Petit carré marron en bas à gauche
+		\fill [emsimaroon] 
+		($(current page.south west)+(1cm,3cm)$) rectangle 
+		($(current page.south west)+(1.8cm,4cm)$)
+	;
+		
+				\draw [line width=1pt] 
+		($(current page.north west)+(0.8cm,-2cm)$) rectangle 
+		($(current page.south east)+(-1cm,2cm)$);
+	\end{tikzpicture}
+	
+	% Contenu principal - avec décalage pour tenir compte de la marge verte
+	\begin{center}
+		\vspace*{-2.3cm}
+		
+		% Logos en haut de la page - avec décalage à droite pour le logo EMSI
+		\noindent
+		\hspace*{0.4cm}
+		\begin{minipage}{0.4\textwidth}
+			\includegraphics[width=\textwidth]{logoemsi.png}
+		\end{minipage}
+		\hfill
+		\begin{minipage}{0.4\textwidth}
+			\includegraphics[width=\textwidth]{honoris.png}
+		\end{minipage}
+		\hspace*{0.8cm}
+		
+		\vspace{3cm}
+		
+		% Nom de l'école
+		{\large \textbf{ÉCOLE MAROCAINE DES SCIENCES DE}\\[0.3cm]
+			\textbf{L'INGÉNIEUR - RABAT}}
+		
+		\vspace{3cm}
+		
+		% Titre du PFE encadré par des lignes horizontales
+		\rule{14cm}{0.5pt}\\[0.5cm]
+		{\Large \textbf{Domaine du paiement électronique}}\\[0.5cm]
+		\rule{14cm}{0.5pt}
+	\end{center}
+	
+	\vspace{3cm}
+	
+	% Section des élèves et encadrant - avec décalage pour éviter la marge verte
+	\hspace*{1.2cm}
+	\begin{minipage}{0.4\textwidth}
+		\textbf{Élèves :}\\
+		Mohammed CHEMLAL\\
+		Mohamed Ayoub SABOUNI
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.4\textwidth}
+		\textbf{Encadrant :}\\
+		Nisrine DAD
+	\end{minipage}
+	\hspace*{1.2cm}
+	
+	\vspace{1cm}
+		\begin{center}
+	% Section jury - avec décalage
+	\hspace*{1.2cm}\textbf{Jury :}
+	
+	\vfill
+		\end{center}
+	% Année universitaire au bas de la page
+	\begin{center}
+		\textbf{Année Universitaire 2024-2025}
+	\end{center}
+	
+	% ---- DÉDICACES ----
+	\cleardoublepage
+	\thispagestyle{empty}
+	\begin{center}
+		\vspace*{3cm}
+		{\Large \textbf{Dédicaces}}
+	\end{center}
+	
+	\vspace{1cm}
+			\label{sec:dedi}
+		Nous dédions ce rapport à nos parents, nos familles et nos amis pour exprimer notre profonde gratitude :
+		\vspace{1cm}
+		À nos parents, qui ont toujours été à nos côtés, nous soutenant et nous encourageant tout au long de notre parcours. Leur amour inconditionnel, leurs sacrifices et leur confiance en nous ont constamment nourri notre motivation pour atteindre nos objectifs et réussir cette étape cruciale de notre vie. Que Dieu les protège et leur accorde santé et bonheur.
+		
+		\vspace{0.8cm}
+		À nos familles, pour leur soutien moral et affectif. Leurs encouragements incessants, leur présence chaleureuse et leurs conseils avisés nous ont offert une solide base de soutien et de motivation.
+		
+		\vspace{0.8cm}
+		À nos amis, pour leur soutien inconditionnel et leurs encouragements constants. Leur amitié a été une source de réconfort qui nous a aidés à surmonter les défis rencontrés. Nous sommes infiniment reconnaissants de leur présence dans nos vies.
+	
+	
+
+	
+% ---- REMERCIEMENTS ----
+\cleardoublepage
+\thispagestyle{empty}
+\begin{center}
+	\vspace*{2cm}
+	{\Large \textbf{Remerciements}}
+\end{center}
+
+\vspace{1cm}
+	\label{sec:rem}
+	Tout d'abord, nous souhaitons exprimer notre profonde gratitude envers l'École Marocaine des Sciences de l'Ingénieur ainsi que toute l'équipe pédagogique pour la qualité de la formation et l'excellence de l'enseignement théorique. Cette formation a joué un rôle déterminant dans la construction des profils professionnels que nous aspirons à développer.
+	
+	\vspace{0.3cm}
+	Nous tenons également à remercier le centre de carrière de l'EMSI. Grâce à leurs efforts en matière de préparation des étudiants au marché du travail et à leur engagement pour attirer les entreprises lors des entretiens de PFE, nous avons pu obtenir notre stage PFE. Leur soutien a été précieux et est sincèrement apprécié.
+	
+	\vspace{0.3cm}
+	Nous souhaitons exprimer notre gratitude à l'entreprise CGI pour nous avoir offert cette opportunité enrichissante et bénéfique.
+	
+	\vspace{0.3cm}
+	Nous remercions particulièrement Monsieur Mustapha Rachid, notre tuteur de stage, pour son accueil chaleureux, son accompagnement et sa supervision tout au long de notre stage, ainsi que l'ensemble de l'équipe.
+	
+	\vspace{0.3cm}
+	Nous tenons également à exprimer notre sincère reconnaissance à Madame Nissrine Dad, notre tuteur académique, pour sa générosité en termes d'informations, ses précieux conseils, son encadrement attentif et sa disponibilité durant notre période de stage. Nous sommes particulièrement reconnaissants de l'avoir comme encadrante.
+	
+	\vspace{0.3cm}
+	Avec l'achèvement de ce travail, non seulement par nécessité, mais aussi par respect et gratitude, nous souhaitons exprimer notre profonde reconnaissance à tous ceux qui ont contribué, de près ou de loin, à la mise en œuvre de ce travail.
+	
+	\vspace{0.3cm}
+	Et enfin, nous souhaitons adresser nos remerciements aux membres du jury pour l'honneur qu'ils nous ont fait en acceptant d'évaluer notre projet.
+
+
+
+	
+	% ---- RÉSUMÉ ----
+	\cleardoublepage
+	\thispagestyle{empty}
+	\begin{center}
+		\vspace*{3cm}
+		{\Large \textbf{Résumé}}
+	\end{center}
+	
+
+	
+	% ---- ABSTRACT ----
+	\cleardoublepage
+	\thispagestyle{empty}
+	\begin{center}
+		\vspace*{3cm}
+		{\Large \textbf{Abstract}}
+	\end{center}
+	
+
+	
+	% ---- TABLE DES MATIÈRES ----
+	\cleardoublepage
+	\tableofcontents
+	
+	% ---- LISTE DES FIGURES ----
+	\cleardoublepage
+	\listoffigures
+	
+	% ---- LISTE DES TABLEAUX ----
+	\cleardoublepage
+	\listoftables
+	
+	% ---- DÉBUT DES CHAPITRES ----
+	\cleardoublepage
+	\renewcommand{\thepage}{\arabic{page}}
+	
+	\chapter{Contexte général du projet}
+	\section{Introduction}
+	\label{sec:intro}
+	Le secteur des transactions financières connaît une évolution rapide, marquée par
+	la digitalisation croissante des services et límportance accrue des systèmes de paiement
+	électronique. Au cœur de cet écosystème, les Guichets Automatiques Bancaires (GAB)
+	demeurent un point de contact essentiel pour les usagers, leur offrant un accès continu
+	aux services bancaires de base. Cependant, la performance et la disponibilité de ces auto-
+	mates dépendent fortement d’une gestion efficace de leurs ressources et düne maintenance
+	proactive. Assurer le bon fonctionnement des GAB, notamment en ce qui concerne l’ap-
+	provisionnement en consommables comme les espèces et le papier, ainsi que la résolution
+	rapide des incidents techniques, représente un défi logistique et opérationnel majeur pour
+	les institutions financières et les entreprises de services associées.
+	
+	Dans ce contexte, l’optimisation de la supervision et de la gestion des GAB devient pri-
+	mordiale. L’émergence de nouvelles architectures logicielles, telles que les microservices,
+	et le développement d’interfaces utilisateur modernes offrent des opportunités inédites
+	pour améliorer la collecte de données en temps réel, l’analyse prédictive des besoins et
+	l’automatisation des processus de maintenance. Ce projet de fin d’études s’inscrit dans
+	cette dynamique d’innovation en proposant la conception et le développement d’une so-
+	lution logicielle dédiée à l’amélioration de la gestion des GAB. L’objectif principal est de
+	répondre aux limitations des systèmes existants en matière de suivi des consommables et
+	de gestion des incidents, en s’appuyant sur une architecture microservices robuste et évo-
+	lutive, combinant les technologies Angular pour l’interface utilisateur et Spring Boot pour
+	les services backend. Ce chapitre introductif posera les bases de notre étude en présen-
+	tant l’organisme d’accueil, l’analyse de la situation actuelle, la problématique identifiée,
+	la solution envisagée et la méthodologie de gestion de projet adoptée.
+	
+	\section{Présentation de l’organisme d’accueil}
+	\label{sec:organisme}
+	 Le stage de fin d’études s’est déroulé au sein de l’entreprise Global Transaction So-
+	 lution (GTS), une société implantée à Rabat. GTS évolue dans le secteur dynamique
+	 des solutions de transactions électroniques, se positionnant comme un acteur clé dans la
+	 fourniture de services et de technologies liés aux systèmes de paiement et à la gestion des
+	 automates bancaires au Maroc. L’entreprise concentre son expertise sur le développement
+	 et la maintenance de solutions innovantes visant à optimiser les opérations transaction-
+	 nelles pour ses clients, principalement des institutions financières.
+	 
+	 L’environnement de travail chez GTS offre un cadre propice à l’apprentissage et à
+	 l’application de technologies de pointe dans le domaine financier. En tant qu’entreprise
+	 spécialisée dans les GAB et les systèmes de paiement, GTS est directement confrontée
+	 aux défis opérationnels liés à la gestion d’un parc dautomates, notamment en termes dedisponibilité, de maintenance et de sécurité. C’est dans ce contexte que s’inscrit ce projet,
+	 qui vise à apporter une contribution directe à l’amélioration des processus internes de
+	 GTS par le biais d’une solution logicielle moderne et adaptée aux exigences spécifiques
+	 de la supervision des GAB.
+
+	
+	\section{Étude de l’existant}
+    \label{sec:existant}
+	L’analyse de la situation actuelle au sein de Global Transaction Solution et plus large-
+	ment dans le secteur de la gestion des GAB révèle plusieurs défis opérationnels. Actuelle-
+	ment, les systèmes de supervision des automates bancaires présentent souvent des lacunes
+	en matière de communication et de réactivité. Un des points faibles majeurs concerne la
+	transmission des données relatives à l’état des consommables, tels que les niveaux d’es-
+	pèces dans les cassettes et les réserves de papier pour les reçus. Les mécanismes existants
+	pour remonter ces informations peuvent être lents, peu fiables ou nécessiter des interven-
+	tions manuelles, entraînant des retards dans le réapprovisionnement et potentiellement
+	des interruptions de service pour les utilisateurs finaux.
+	
+	Par ailleurs, la gestion des incidents techniques constitue un autre aspect critique.
+	Lorsqu’un GAB rencontre une panne ou un dysfonctionnement (bourrage papier, lecteur
+	de carte défectueux, problème de distribution d’espèces, etc.), les processus actuels de dé-
+	tection, de diagnostic et d’alerte des équipes techniques peuvent manquer d’efficacité. Les
+	informations sur la nature exacte de l’incident ne sont pas toujours transmises de manière
+	précise ou immédiate, ce qui complique l’intervention des techniciens et prolonge les délais
+	de résolution. L’absence d’un système centralisé et automatisé pour la notification et le
+	suivi des incidents impacte directement la disponibilité du parc de GAB et la qualité du
+	service rendu.
+
+	
+	\section{Problématique}
+	\label{sec:problematique}
+	L’étude de l’existant met en lumière une problématique centrale liée à l’inefficacité
+	des systèmes actuels de supervision des GAB au sein de Global Transaction Solution. Le
+	principal défi réside dans le manque de fluidité et de fiabilité dans la communication des
+	informations critiques entre les automates et le système central de gestion. Plus spécifi-
+	quement, la transmission des données concernant les niveaux de consommables (cassettes
+	de billets, rouleaux de papier) est souvent lacunaire ou retardée. Cette situation engendre
+	des difficultés dans la planification logistique des réapprovisionnements, pouvant conduire
+	à des ruptures de stock et donc à líndisponibilité des GAB, affectant négativement léxpé-
+	rience client et límage de marque des institutions financières partenaires.
+	
+	En parallèle, la gestion des incidents techniques représente une seconde facette de la
+	problématique. Les mécanismes actuels de détection et de notification des pannes ou dys-
+	fonctionnements manquent dáutomatisation et de précision. Lorsquún incident survient,
+	lálerte des équipes techniques nést pas toujours immédiate, et les informations transmises
+	sur la nature du problème sont parfois insuffisantes pour permettre un diagnostic ra-
+	pide et une intervention ciblée. Ce manque de réactivité et de précision dans la gestion
+	des incidents prolonge les temps dárrêt des GAB, augmente les coûts de maintenance et
+	complexifie le suivi des interventions. La problématique générale est donc double : opti-
+	miser la gestion des consommables par une meilleure visibilité en temps réel et améliorer
+	la réactivité face aux incidents techniques grâce à un système dálerte et de suivi plus
+	performant.
+	
+	
+
+	\section{ Solution }
+	\label{sec:solution}
+	
+	Face à la problématique identifiée, la solution proposée dans le cadre de ce projet consiste à développer une plateforme logicielle moderne et centralisée pour la supervision et la gestion optimisée des Guichets Automatiques Bancaires. Cette solution s'appuiera sur une architecture microservices, choisie pour sa flexibilité, son évolutivité et sa résilience. L'objectif principal est de fournir à Global Transaction Solution un outil performant capable de collecter en temps réel les données critiques provenant des GAB et d\'automatiser la gestion des incidents.
+	
+	Technologiquement, la solution combinera le framework frontend Angular pour la création d'une interface utilisateur web réactive et intuitive, et le framework backend Spring Boot pour le développement des différents microservices. L'interface Angular permettra aux opérateurs et aux gestionnaires de visualiser l'état du parc de GAB, de consulter les niveaux de consommables (espèces, papier) en temps réel, et de suivre le statut des incidents. Côté backend, les microservices développés avec Spring Boot prendront en charge des fonctionnalités spécifiques telles que la collecte et le traitement des données envoyées par les GAB, la gestion des seuils d'alerte pour les consommables, la détection et la classification des incidents, ainsi que la notification automatique des techniciens concernés par appel ou SMS en cas de besoin d'intervention. Cette architecture modulaire permettra également d\'intégrer plus facilement de nouvelles fonctionnalités ou de s'adapter aux évolutions futures des besoins de l'entreprise.
+	
+	\section{Gestion de projets}
+	\label{sec:gestion}
+	
+	Pour mener à bien le développement de la solution logicielle de gestion des GAB, une approche agile a été privilégiée, spécifiquement la méthodologie Scrum. Ce choix s'explique par la nature itérative et incrémentale de Scrum, qui est particulièrement adaptée aux projets où les exigences peuvent évoluer et où une collaboration étroite avec les parties prenantes est nécessaire. L'adoption de Scrum permet une grande flexibilité, favorise la communication au sein de l'équipe de développement et avec l'entreprise d'accueil, et assure une livraison régulière de fonctionnalités testées et potentiellement déployables.
+	
+	Le cadre Scrum structure le projet en sprints, des cycles de développement courts (généralement de deux à quatre semaines) à l'issue des quels une nouvelle version incrémentielle du logiciel est produite. Chaque sprint commence par une réunion de planification (Sprint Planning) pour définir les objectifs et sélectionner les tâches à réaliser à partir du Product Backlog (liste priorisée des fonctionnalités). Des réunions quotidiennes courtes (Daily Scrums) permettent à l'équipe de synchroniser son travail et d'identifier les éventuels obstacles. À la fin de chaque sprint, une revue (Sprint Review) est organisée pour présenter les fonctionnalités développées aux parties prenantes et recueillir leurs retours, suivie d'une rétrospective (Sprint Retrospective) où l'équipe analyse son propre processus pour identifier des axes d'amélioration continue. Cette approche méthodologique vise à garantir la qualité du produit final, sa conformité aux besoins de Global Transaction Solution, et le respect des délais impartis pour le projet de fin d'études.
+	
+	\section{Conclusion}
+	\label{sec:conclusion}
+	
+	En conclusion, ce premier chapitre a posé le cadre général de notre projet de fin d'études. Nous avons introduit le contexte du paiement électronique et l'importance cruciale de la gestion efficace des Guichets Automatiques Bancaires. La présentation de l\"organisme d'accueil, Global Transaction Solution, a permis de situer le projet au sein d'une entreprise spécialisée confrontée aux défis opérationnels de ce secteur. L'étude de l'existant a mis en évidence les limitations des systèmes actuels, notamment en ce qui concerne la transmission des données sur les consommables et la réactivité face aux incidents techniques, définissant ainsi clairement la problématique à résoudre.
+	
+	Face à ces enjeux, nous avons esquissé la solution envisagée : une plateforme logicielle basée sur une architecture microservices utilisant Angular et Spring Boot, conçue pour optimiser la supervision des GAB par la collecte de données en temps réel et l\"automatisation de la gestion des incidents. Enfin, l'adoption de la méthodologie agile Scrum a été justifiée comme le cadre le plus approprié pour mener à bien ce développement de manière itérative et collaborative. Ce chapitre introductif jette ainsi les bases nécessaires à la compréhension des objectifs, du contexte et de l'approche de ce projet, dont les détails techniques et la mise en œuvre seront développés dans les chapitres suivants.
+	
+	
+\end{document}
